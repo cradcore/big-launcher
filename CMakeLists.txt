@@ -40,7 +40,7 @@ elseif (WIN32)
   find_package(spdlog CONFIG REQUIRED)
   find_package(LibXml2 REQUIRED)
   find_package(unofficial-inih CONFIG REQUIRED)
-  
+
   find_path(GETOPT_INCLUDE_DIR "getopt.h" REQUIRED)
   find_library(GETOPT getopt REQUIRED)
 endif()
@@ -80,6 +80,16 @@ configure_file(${PROJECT_SOURCE_DIR}/config/config.h.in ${PROJECT_BINARY_DIR}/lc
 configure_file(${PROJECT_SOURCE_DIR}/config/layout.xml.in ${PROJECT_BINARY_DIR}/layout.xml)
 configure_file(${PROJECT_SOURCE_DIR}/config/config.ini.in ${PROJECT_BINARY_DIR}/config.ini)
 
+# Copy asssets to build folder
+set(ASSETS_DIR "${PROJECT_SOURCE_DIR}/assets")
+set(ASSETS_DEST_DIR "${PROJECT_BINARY_DIR}/assets")
+add_custom_command(
+    OUTPUT "${ASSETS_DEST_DIR}"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${ASSETS_DIR}" "${ASSETS_DEST_DIR}"
+    COMMENT "Copying assets directory to build folder"
+)
+add_custom_target(copy_assets ALL DEPENDS "${ASSETS_DEST_DIR}")
+
 # Generate Windows application manifest
 if (WIN32)
   set(VERSION_M ${PROJECT_VERSION_MAJOR})
@@ -99,7 +109,7 @@ if (WIN32)
     set(VERSION_P 0)
   endif()
   configure_file(
-    "${PROJECT_SOURCE_DIR}/config/${EXECUTABLE_TITLE}.manifest.in" 
+    "${PROJECT_SOURCE_DIR}/config/${EXECUTABLE_TITLE}.manifest.in"
 	"${PROJECT_BINARY_DIR}/${EXECUTABLE_TITLE}.manifest"
   )
 endif()

@@ -1,8 +1,8 @@
 <layout>
-    
+
     <!-- Menus here -->
     <menu title="Media">
-    
+
         <entry title="Kodi">
             <command>@CMD_KODI@</command>
             <card>
@@ -10,7 +10,7 @@
                 <background>#000000</background>
             </card>
         </entry>
-        
+
         <entry title="Plex">
             <command>@CMD_PLEX@</command>
             <card>
@@ -26,7 +26,7 @@
                 <background>#FFFFFF</background>
             </card>
         </entry>
-        
+
         <entry title="YouTube">
             <command>@CMD_YOUTUBE@</command>
             <card>
@@ -34,7 +34,7 @@
                 <background>#FFFFFF</background>
             </card>
         </entry>
-        
+
         <entry title="Jellyfin">
             <command>@CMD_JELLYFIN@</command>
             <card>
@@ -50,7 +50,7 @@
     </menu>
 
     <menu title="Games">
-    
+
         <entry title="Steam">
             <command>@CMD_STEAM@ steam://open/bigpicture</command>
             <card>
@@ -58,7 +58,7 @@
                 <background>#000000</background>
             </card>
         </entry>
-        
+
         <entry title="RetroArch">
             <command>@CMD_RETROARCH@</command>
             <card>
